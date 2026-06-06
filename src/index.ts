@@ -7,6 +7,24 @@ import aiRoutes from "./routes/ai.js"
 import paymentRoutes from "./routes/payment.js"
 import { errorHandler } from "./middleware/errorHandler.js";
 import Razorpay from "razorpay"
+import axios from "axios";
+
+const url = `https://render-hosting-se2b.onrender.com`;
+const interval = 30000;
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log("website reloded");
+    })
+    .catch((error) => {
+      console.error(`Error : ${error.message}`);
+    });
+}
+
+setInterval(reloadWebsite, interval);
+
 
 
 
